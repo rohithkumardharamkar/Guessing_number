@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            position: relative;
+            top: 100px;
+            margin: auto;
+            width: 700px;
+            height: 50vh;
+            background-color: brown;
+            border: 10px burlywood;
+            border-style: double;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        input {
+            width: 400px;
+            height: 5vh;
+            padding: 10px;
+        }
+
+        button {
+            cursor: pointer;
+            width: 100px;
+            height: 6vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2>Guess Any Number between 1 to 100</h2>
+        <input type="text" placeholder="Please Enter your Guess">
+        <button onclick=fun()>Guess</button>
+        <h4></h4>
+        <h3></h3>
+    </div>
+    <script>
+        let random = Math.floor(Math.random() * 100) + 1
+        let c = 10;
+        let res = document.getElementsByTagName("h4")[0];
+        let count = document.getElementsByTagName("h3")[0];
+        function fun() {
+            let numb = document.getElementsByTagName("input")[0];
+
+            num = numb.value;
+            if(num>100)
+        {
+            alert("Number cannot be greater than 100")
+        }
+            if (num == "") {
+                res.innerHTML = "Please provide the input"
+                return;
+            }
+
+
+            console.log(random);
+            c--;
+            console.log(c);
+            count.innerHTML = `You have ${c} guesses`
+            if (c == 0) {
+                count.innerHTML = "Game Over Please Try again"
+                c = 10
+                return;
+            }
+
+
+            while (true) {
+                if (num == random) {
+                    res.innerHTML = "Congrats Correct guess"
+                    count.innerHTML = ""
+                    numb.innerHTML=""
+                    console.log("correct guess");
+                    return;
+                    break;
+                }
+                else if (num > random) {
+                    res.innerHTML = "You Guessed Too high"
+                    console.log("guess too high");
+                    numb.innerText=""
+                    break;
+
+                }
+                else if (num < random) {
+                    res.innerHTML = "You guessed too low"
+                    console.log("guess too low");
+                    numb.innerText=""
+
+                    break;
+
+                }
+            }
+            numb.value=""
+           console.log(numb.value);
+           
+            
+
+        }
+    </script>
+</body>
+
+</html>
